@@ -1,0 +1,60 @@
+{
+  "name": "@coxmediagroup/lambda-decorators",
+  "version": "1.0.0",
+  "description": "Collection of useful decorators for wrapping Lambda functions with reusable code",
+  "main": "dist/index.js",
+  "scripts": {
+    "build:clean": "rimraf dist",
+    "build:js": "babel src --out-dir dist --extensions \".ts\" --source-maps inline",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build": "npm run build:clean && npm run build:types && npm run build:js",
+    "lint": "tslint --project tsconfig.json -c tslint.json",
+    "preflight": "run-p lint test",
+    "test": "jest --config jest.test.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coxmediagroup/lambda-decorators-js.git"
+  },
+  "keywords": [
+    "AWS",
+    "Lambda",
+    "NodeJS",
+    "Serverless"
+  ],
+  "author": "github.com/sframe",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/coxmediagroup/lambda-decorators-js/issues"
+  },
+  "homepage": "https://github.com/coxmediagroup/lambda-decorators-js#readme",
+  "include": [
+    "dist"
+  ],
+  "dependencies": {
+    "@babel/runtime": "^7.4.5"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
+    "@babel/plugin-transform-regenerator": "^7.4.5",
+    "@babel/plugin-transform-runtime": "^7.4.4",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-typescript": "^7.3.3",
+    "@babel/types": "^7.4.4",
+    "@types/aws-lambda": "^8.10.1",
+    "@types/jest": "^24.0.13",
+    "jest": "^24.1.0",
+    "prettier": "^1.17.1",
+    "rimraf": "^2.6.3",
+    "ts-jest": "~24.0.2",
+    "tslint": "^5.13.1",
+    "tslint-config-airbnb": "^5.11.1",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-plugin-prettier": "^2.0.1",
+    "typescript": "^3.5.1",
+    "typescript-tslint-plugin": "^0.1.2"
+  }
+}
