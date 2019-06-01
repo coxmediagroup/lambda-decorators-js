@@ -1,24 +1,5 @@
 # Developer Notes:
 
-## Node runtime
-Ensure you that you are running the expected NodeJS runtime!
-
-```bash
-cat .nvmrc
-```
-
-```
-v8.10.0
-```
-
-```bash
-node --version
-```
-
-```
-v8.10.0
-```
-
 If the versions do not match then subtle issues may occur.
 
 ## Tests
