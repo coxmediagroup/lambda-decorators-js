@@ -18,15 +18,10 @@ export const httpErrors: HttpErrors = (target, options) => {
   const { logger = nullLogger } = options;
 
   const wrappedHandler: LikeAPIGatewayProxyHandler = async (...args) => {
-    const { 0: event, 1: context, 2: callback } = args;
+    const { 0: event, 1: context } = args;
 
     try {
       const response = await target(event, context);
-
-      if (typeof callback === 'function') {
-        return callback(null, response);
-      }
-
       return response;
     } catch (err) {
       const { message = '' } = err;
@@ -47,11 +42,6 @@ export const httpErrors: HttpErrors = (target, options) => {
         const response = { body, statusCode };
 
         logger.info(`httpError: [${statusCode}] "${statusMessage}" "${customMessage || ''}"`);
-
-        if (typeof callback === 'function') {
-          return callback(null, response);
-        }
-
         return response;
       }
 

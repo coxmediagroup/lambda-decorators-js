@@ -10,7 +10,7 @@ export const formatJSON: FormatJSON = (target, options = {}) => {
     spacing = 0,
   } = options;
   const wrappedHandler: LikeAPIGatewayProxyHandler = async (...args) => {
-    const { 0: event, 1: context, 2: callback } = args;
+    const { 0: event, 1: context } = args;
 
     const response = await target(event, context);
 
@@ -22,11 +22,6 @@ export const formatJSON: FormatJSON = (target, options = {}) => {
         logger.warn(err);
       }
     }
-
-    if (typeof callback === 'function') {
-      return callback(null, response);
-    }
-
     return response;
   };
 
